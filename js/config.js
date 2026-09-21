@@ -6,7 +6,7 @@ const CONFIG = {
 
   // Fecha y hora en las que se cierra el registro y se abre el sorteo.
   // Formato ISO 8601 con zona horaria explícita (evita ambigüedades entre husos horarios).
-  countdownTarget: "2026-09-21T17:00:00+02:00",
+  countdownTarget: "2026-09-26T00:00:00+02:00",
 
   // Clave compartida con el grupo. Es solo un filtro suave contra desconocidos
   // con el enlace, no una medida de seguridad real.
