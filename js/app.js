@@ -138,22 +138,17 @@ function initParticipantsList(participantsCache, onUpdate) {
 
   function renderParticipants() {
     const entries = Object.entries(participantsCache.data);
-    const drawPhase = isDrawPhase();
 
-    headingEl.textContent = drawPhase ? "Pendientes por descubrir" : "Quiénes juegan";
-
-    const visible = drawPhase
-      ? entries.filter(([, p]) => !p.hasDrawn)
-      : entries;
+    headingEl.textContent = "Quiénes juegan";
 
     listEl.innerHTML = "";
-    visible.forEach(([, p]) => {
+    entries.forEach(([, p]) => {
       const li = document.createElement("li");
       li.textContent = p.name + " " + p.surname;
       listEl.appendChild(li);
     });
 
-    emptyEl.classList.toggle("hidden", visible.length > 0);
+    emptyEl.classList.toggle("hidden", entries.length > 0);
   }
 }
 
@@ -178,15 +173,15 @@ function computeAssignments(participantIds) {
 }
 
 function ensureAssignmentsComputed() {
-  db.ref("gameState/assignmentsComputed").transaction((current) => {
-    if (current) return; // ya calculado por otro visitante: abortar
-    return true;
-  }, (error, committed) => {
-    if (error || !committed) return;
+  db.ref("participants").once("value").then((snapshot) => {
+    const ids = Object.keys(snapshot.val() || {});
+    if (ids.length < 2) return;
 
-    db.ref("participants").once("value").then((snapshot) => {
-      const ids = Object.keys(snapshot.val() || {});
-      if (ids.length < 2) return;
+    db.ref("gameState/assignmentsComputed").transaction((current) => {
+      if (current) return; // ya calculado por otro visitante: abortar
+      return true;
+    }, (error, committed) => {
+      if (error || !committed) return;
 
       const assignments = computeAssignments(ids);
       const updates = {};
