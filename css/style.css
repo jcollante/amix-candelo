@@ -1,0 +1,291 @@
+:root {
+  --blue: #2456a6;
+  --blue-dark: #173a7a;
+  --yellow: #f7c331;
+  --red: #e0273f;
+  --red-dark: #b81f33;
+  --bg: #ffffff;
+  --ink: #23324a;
+  --muted: #6b7789;
+  --card-border: #e7ecf5;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: "Fredoka", sans-serif;
+  color: var(--blue-dark);
+  margin: 0 0 0.4em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75em 1.6em;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--blue);
+  color: white;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+button:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+input, select {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  padding: 0.7em 1em;
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  background: white;
+  color: var(--ink);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.75em;
+  margin: 0 auto 1.5em;
+  max-width: 560px;
+  box-shadow: 0 8px 24px rgba(23, 58, 122, 0.06);
+}
+
+/* ---------- Passcode gate ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(160deg, var(--blue) 0%, var(--blue-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em;
+  z-index: 10;
+}
+
+.overlay .card {
+  text-align: center;
+}
+
+.logo--small {
+  width: 90px;
+}
+
+.overlay form {
+  display: flex;
+  gap: 0.6em;
+  margin-top: 1em;
+}
+
+.overlay input {
+  flex: 1;
+}
+
+/* ---------- Header ---------- */
+
+.hero {
+  text-align: center;
+  padding: 3em 1.5em 1.5em;
+  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+  border-bottom: 6px solid var(--yellow);
+  box-shadow: 0 4px 0 var(--red), 0 10px 0 var(--yellow);
+  margin-bottom: 2.5em;
+}
+
+.hero .logo {
+  width: 130px;
+  margin-bottom: 0.5em;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+main {
+  padding: 0 1.25em 3em;
+}
+
+/* ---------- Countdown ---------- */
+
+#countdown-section {
+  text-align: center;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 0.9em;
+  flex-wrap: wrap;
+}
+
+.countdown__unit {
+  background: var(--blue);
+  color: white;
+  border-radius: 14px;
+  padding: 0.8em 1em;
+  min-width: 68px;
+}
+
+.countdown__unit span {
+  display: block;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.countdown__unit label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* ---------- Registration ---------- */
+
+#registration-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+}
+
+#registration-form input {
+  flex: 1;
+  min-width: 140px;
+}
+
+#registration-form button {
+  background: var(--red);
+}
+
+#registration-form button:hover {
+  background: var(--red-dark);
+}
+
+/* ---------- Participants list ---------- */
+
+#participants-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+#participants-list li {
+  background: #fff6dc;
+  border: 1px solid var(--yellow);
+  color: var(--blue-dark);
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Draw section ---------- */
+
+.warning {
+  background: #fdeceb;
+  border: 1px solid var(--red);
+  color: var(--red-dark);
+  padding: 0.9em 1.1em;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#draw-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+  margin-top: 1.2em;
+}
+
+#draw-select {
+  flex: 1;
+  min-width: 160px;
+}
+
+#draw-button {
+  background: var(--red);
+}
+
+#draw-button:hover {
+  background: var(--red-dark);
+}
+
+#roulette {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.roulette-name {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.6rem;
+  color: var(--blue);
+}
+
+#reveal-result {
+  text-align: center;
+  padding: 1.5em 0 0;
+}
+
+.reveal-label {
+  color: var(--muted);
+  margin: 0;
+}
+
+.reveal-name {
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem;
+  color: var(--red);
+  margin: 0.2em 0;
+}
+
+.reminder {
+  color: var(--blue-dark);
+  font-weight: 600;
+}
+
+.error {
+  color: var(--red-dark);
+  font-weight: 600;
+  margin-top: 0.6em;
+}
