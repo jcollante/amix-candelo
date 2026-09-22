@@ -132,6 +132,7 @@ input:focus, select:focus {
   max-width: 480px;
   margin: 0 auto;
   font-size: 1.05rem;
+  white-space: pre-line;
 }
 
 main {
